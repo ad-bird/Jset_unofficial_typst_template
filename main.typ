@@ -129,6 +129,28 @@
   delimiter: "|",      // The delimiter between words
   auto-spacing: true,  // Automatically add necessary space around words
 )
+//均等割付
+//参照：Typstで均等割付 #Typst - Qiita https://qiita.com/tomoyatajika/items/19cfda43f9760180c332
+#let kinto(moji,body) ={
+context[
+#let size = measure[#body.clusters().at(0)].width
+#let wari_width = size * moji
+#let body_mojisuu = calc.round(measure[#body].width/size)
+#let cell_width = wari_width/body_mojisuu
+#let haba = (wari_width - measure[#body].width)/(body_mojisuu - 1)
+#let columns_cell = () 
+#for i in range(moji) {
+  columns_cell.push(cell_width)
+}
+#let body_array = ()
+#let x = int(body.clusters().len())
+#for i in range(x) {
+  body.clusters().at(i) 
+  h(haba)
+}
+#h(-haba)
+]
+}
 //脚注
 #set footnote(numbering: "1")
 #show footnote.entry: set text(font:("MS Mincho","IPAMincho"),size:8pt) //脚注：フォント
@@ -306,15 +328,15 @@
 ===== 注
 注はできる限りない方が望ましいが，必要な場合は記述する．
 
-===== 付　　　　　記
+===== #kinto(7,"付記")
 必要に応じて付記を記述する．ただし，査読用ファイルに，付記と列挙した参考文献を含めない．
 
-===== 謝　　　　　辞
+===== #kinto(7,"謝辞")
 簡潔に謝辞を記述する．ただし，査読用ファイルに謝辞を含めない．
 
 
 
-===== 参　考　文　献
+===== #kinto(7,"参考文献")
 #set par(justify:true,linebreaks:"optimized",first-line-indent:0em,hanging-indent:2em)
 
 GODA,Y.,TAKABAYASHI,T. and SUZUKI,K.(2022) Impact of the COVID-19 Pandemic on Education in Japan and the Role of the Japan Society for Educational Technology. In V.Dennen,C.Dickson-Deane, X.Ge, D.Ifenthaler, S.Murthy et al.(Eds.),#emph[Global Perspectives on Educational Innovations for Emergency Situations],Springer,pp.275-284.https://doi.org/10.1007/978-3-030-99634-5_27
@@ -334,6 +356,6 @@ KEYWORDS: JSET， WORD， TEMPLATE， STYLE，CHECK
 
 #align(right)[(Received Month Day， 20xx)]
 
-===== 付　　　　　録
+===== #kinto(7,"付録")
 原則として，論文に必要な情報は本文中に示すこととし，付録は認めない．どうしてもやむを得ず付録を付す必要がある場合は，Summaryの後に記載する．ただし，電子付録は認めない．
 
