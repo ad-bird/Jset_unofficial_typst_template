@@ -45,12 +45,10 @@
   }
   s
 }
-#let fakeitalic(
+#let emph(
   ang: -18.4deg,
   s,
 ) = regex-fakeitalic(reg-exp: "(?:\b[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}！-･〇-〰—]+?\b|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])", ang: ang, s)
-#let emph = fakeitalic
-
 // 見出し設定 
 #import "@preview/numbly:0.1.0": numbly
 #set heading(numbering: numbly( //use {level:format} to specify the format
