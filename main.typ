@@ -44,6 +44,7 @@
   }
   s
 }
+//斜体　参照：csimide/cuti: Cuti: A simple typst package simulates fake bold / fake italic characters. | Cuti：在 typst 中便捷使用伪粗体/伪斜体　https://github.com/csimide/cuti?tab=MIT-1-ov-file#readme
 #let fakeitalic(
   ang: -18.4deg,
   s,
