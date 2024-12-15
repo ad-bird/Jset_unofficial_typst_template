@@ -38,13 +38,13 @@
 // ページサイズ・余白・本文とフッターとの間
 #set page(paper:"jis-b5",margin: (top:24.5mm,bottom:22.5mm,left:16mm,right:16mm,), footer-descent:10pt,)
 //斜体のないMSフォントを斜体にする。本文では #emph[...]
+//参照：csimide/cuti: Cuti: A simple typst package simulates fake bold / fake italic characters. | Cuti：在 typst 中便捷使用伪粗体/伪斜体　https://github.com/csimide/cuti?tab=MIT-1-ov-file#readme
 #let regex-fakeitalic(reg-exp: ".+?", ang: -18.4deg, s) = {
   show regex(reg-exp): it => {
     box(skew(ax: ang, reflow: false, it))
   }
   s
 }
-//斜体　参照：csimide/cuti: Cuti: A simple typst package simulates fake bold / fake italic characters. | Cuti：在 typst 中便捷使用伪粗体/伪斜体　https://github.com/csimide/cuti?tab=MIT-1-ov-file#readme
 #let fakeitalic(
   ang: -18.4deg,
   s,
